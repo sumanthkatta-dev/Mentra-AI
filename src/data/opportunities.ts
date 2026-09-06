@@ -1,0 +1,226 @@
+import type { Opportunity } from '../types';
+
+export const INITIAL_OPPORTUNITIES: Opportunity[] = [
+  {
+    id: 'nexus-ai-staff',
+    companyName: 'Nexus AI Labs',
+    companyBadge: 'Series C • Tier 1 AI Infrastructure',
+    verified: true,
+    roleTitle: 'Staff Distributed Systems Engineer',
+    location: 'San Francisco, CA (Remote Available)',
+    matchScore: 96,
+    summary:
+      'At Nexus AI Labs, our distributed infrastructure orchestrates high-concurrency model training and low-latency inference pipelines across multi-node GPU clusters. In this role, you will dictate architectural paradigms for sub-millisecond data replication, mitigate cache thrashing across decentralized memory pools, and guide cross-functional research teams moving models from offline weights to dynamic execution graphs.',
+    tags: ['Go', 'Rust', 'Raft Consensus', 'Kubernetes', 'gRPC', 'eBPF'],
+    compRange: '$230,000 - $290,000',
+    compExtra: '+ 0.15% Equity',
+    postedAgo: 'Posted 2 days ago',
+    applicantsCount: 12,
+    remoteType: 'Remote (US)',
+    level: 'Staff Level (IC6)',
+    category: 'Distributed Systems',
+    hasFastTrack: true,
+    coverGradient: 'from-blue-900 via-indigo-900 to-slate-900',
+    leadership: {
+      name: 'Dr. Elena Rostova',
+      title: 'VP of Systems Engineering (Ex-Google, MIT CSAIL)',
+      quote:
+        'We value engineers who reason from first hardware principles and possess intuition for cache line contention and lock contention.',
+      avatarUrl:
+        'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&auto=format&fit=crop&q=80',
+    },
+    metrics: {
+      qps: '1.2M QPS',
+      latency: '< 4.8ms',
+      uptime: 'Zero Downtime',
+    },
+    matchBreakdown: {
+      coreSkills: 98,
+      experienceLevel: 95,
+      techStack: 94,
+      compensation: 100,
+      agentInsight:
+        'Your background in Go, Raft, and high-throughput streaming systems puts you in the top 3% of applicants for this role.',
+    },
+    skillGapsAudit: {
+      gapTitle: 'eBPF Tracing & Kernel Diagnostics',
+      gapDescription:
+        'You have 1 year of verified telemetry production experience vs. desired 3 years for low-level ring-buffer optimizations.',
+      recommendedRoadmapTitle: '4-Week eBPF & Observability Deep Dive',
+      skillsToCover: [
+        'eBPF kernel probe instrumentation (kprobes/uprobes)',
+        'Ring-buffer socket filtering & tracepoints',
+        'BCC & libbpf modern toolchains',
+        'XDP high-performance packet routing',
+      ],
+    },
+    requiredSkills: [
+      'Go & Rust Production Mastery — Deep expertise writing concurrent, zero-allocation network engines with lock-free data structures.',
+      'Distributed Consensus (Raft / Paxos / Chubby) — Hands-on experience modifying or implementing state-machine replication protocols for active-active multi-region systems.',
+      'Kubernetes Operator Frameworks & Service Mesh — Designing bespoke CRDs, control loops, and low-overhead sidecar telemetry with Envoy.',
+      'High-Throughput gRPC & FlatBuffers Streaming — Serialization tuning, custom multiplexers, and hardware-accelerated TCP/RDMA pipelines.',
+      'Large-Scale Resilience & Chaos Engineering — Demonstrated track record maintaining high availability through automated partition injection and split-brain recovery.',
+    ],
+    acceleratedLoopSteps: [
+      {
+        step: 'STEP 1',
+        title: '45-min VP Systems Architecture Deep Dive',
+        subtitle: 'Technical alignment & consensus philosophy',
+      },
+      {
+        step: 'STEP 2',
+        title: 'Live Consensus Pair Debugging (90 min)',
+        subtitle: 'Real telemetry data & network partition scenarios',
+      },
+      {
+        step: 'STEP 3',
+        title: 'Founders & Strategic Roadmap Sync',
+        subtitle: 'Executive offer call & equity breakdown',
+      },
+    ],
+  },
+  {
+    id: 'cognitive-core-labs',
+    companyName: 'Cognitive Core Labs',
+    verified: true,
+    roleTitle: 'Staff Distributed Systems Engineer',
+    location: 'San Francisco, CA (Remote Friendly)',
+    matchScore: 98,
+    summary:
+      'Architecting next-generation distributed inference runtimes with ultra-low latency guarantees across multi-cluster Kubernetes fabrics.',
+    tags: ['Go', 'Kubernetes', 'Raft Consensus', 'gRPC', 'eBPF'],
+    compRange: '$240,000 - $310,000',
+    compExtra: '+ 0.25% Equity',
+    postedAgo: 'Posted 1 day ago',
+    applicantsCount: 8,
+    remoteType: 'Remote Friendly',
+    level: 'Staff Level',
+    category: 'Distributed Systems',
+    hasFastTrack: true,
+    leadership: {
+      name: 'Marcus Vance',
+      title: 'Head of Core Infra',
+      quote:
+        'Our microkernels must sustain peak load without memory fragmentation or jitter.',
+    },
+    metrics: {
+      qps: '2.5M QPS',
+      latency: '< 3.2ms',
+      uptime: '99.999%',
+    },
+    matchBreakdown: {
+      coreSkills: 99,
+      experienceLevel: 98,
+      techStack: 96,
+      compensation: 98,
+      agentInsight:
+        'Cognitive Core Labs values your prior cluster orchestration work. Top 1% match profile.',
+    },
+    skillGapsAudit: {
+      gapTitle: 'SIMD Vector Engine Accelerations',
+      gapDescription: 'Familiarity with AVX-512 memory layouts desired for batch token dispatch.',
+      recommendedRoadmapTitle: '4-Week SIMD & Low-Latency Systems Architecture',
+      skillsToCover: ['AVX-512 instructions', 'Cache line zero-copy', 'Memory mapping'],
+    },
+  },
+  {
+    id: 'aether-edge-network',
+    companyName: 'Aether Edge Network',
+    companyBadge: 'SERIES C',
+    roleTitle: 'Principal AI Infrastructure Architect',
+    location: '100% Remote / US & Canada',
+    matchScore: 94,
+    summary:
+      'Lead architectural blueprints for global edge acceleration nodes, optimizing model weights caching, tensor pipelining, and distributed telemetry.',
+    tags: ['Rust', 'CUDA / TensorRT', 'Kafka', 'Distributed Storage'],
+    compRange: '$260,000 - $340,000',
+    compExtra: '+ Options',
+    postedAgo: 'Posted 3 days ago',
+    applicantsCount: 19,
+    remoteType: '100% Remote',
+    level: 'Principal Architect',
+    category: 'Tech & AI',
+    hasFastTrack: true,
+    metrics: {
+      qps: '850k QPS',
+      latency: '< 6.1ms',
+      uptime: '99.99%',
+    },
+    matchBreakdown: {
+      coreSkills: 94,
+      experienceLevel: 96,
+      techStack: 92,
+      compensation: 97,
+      agentInsight:
+        'Outstanding fit for Rust systems programming and edge routing architectures.',
+    },
+    skillGapsAudit: {
+      gapTitle: 'Distributed Storage Topology Tuning',
+      gapDescription: 'Deep dive needed on RocksDB LSM-tree compaction under heavy write amplification.',
+      recommendedRoadmapTitle: '4-Week LSM-Tree & Distributed Storage Internals',
+      skillsToCover: ['LSM-Trees', 'Write Amplification', 'Zero-Copy IO_URING'],
+    },
+  },
+  {
+    id: 'novus-financial-ledger',
+    companyName: 'Novus Financial Ledger',
+    verified: true,
+    roleTitle: 'Lead High-Throughput Backend Engineer',
+    location: 'New York, NY (Hybrid • 2 Days)',
+    matchScore: 91,
+    summary:
+      'Design microsecond settlement pipelines handling multi-billion dollar transaction velocity, with strict zero-loss idempotent guarantees.',
+    tags: ['Java 21', 'Kafka', 'PostgreSQL', 'AWS'],
+    compRange: '$225,000 - $285,000',
+    compExtra: '+ Annual Bonus',
+    postedAgo: 'Posted 4 days ago',
+    applicantsCount: 27,
+    remoteType: 'Hybrid',
+    level: 'Lead Engineer',
+    category: 'High Comp',
+    metrics: {
+      qps: '600k QPS',
+      latency: '< 1.8ms',
+      uptime: '100% Zero-Loss',
+    },
+    matchBreakdown: {
+      coreSkills: 92,
+      experienceLevel: 90,
+      techStack: 93,
+      compensation: 91,
+      agentInsight:
+        'Financial settlement architecture matches your transaction isolation experience.',
+    },
+  },
+  {
+    id: 'lakehouse-scale-systems',
+    companyName: 'Lakehouse Scale Systems',
+    companyBadge: 'PRE-IPO',
+    roleTitle: 'Staff Query Engine Optimizer',
+    location: 'Seattle, WA (Remote Flexible)',
+    matchScore: 89,
+    summary:
+      'Pushing the boundaries of vectorized execution engines, cost-based query optimization, and petabyte-scale columnar data streaming.',
+    tags: ['C++20', 'Apache Arrow', 'Data Lake', 'SIMD'],
+    compRange: '$250,000 - $320,000',
+    compExtra: '+ High-Growth RSUs',
+    postedAgo: 'Posted 5 days ago',
+    applicantsCount: 14,
+    remoteType: 'Remote Flexible',
+    level: 'Staff Level',
+    category: 'Distributed Systems',
+    metrics: {
+      qps: '10M rows/sec',
+      latency: '< 12ms',
+      uptime: '99.95%',
+    },
+    matchBreakdown: {
+      coreSkills: 88,
+      experienceLevel: 92,
+      techStack: 89,
+      compensation: 95,
+      agentInsight:
+        'Strong alignment with columnar query execution algorithms and Apache Arrow ecosystem.',
+    },
+  },
+];

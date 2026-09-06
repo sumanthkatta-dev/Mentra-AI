@@ -1,0 +1,73 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Global Safety Net: Default-deny all undefined paths
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function incoming() {
+      return request.resource.data;
+    }
+
+    function existing() {
+      return resource.data;
+    }
+
+    function isValidId(id) {
+      return id is string && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    function isValidRoadmap(data) {
+      return data.userId is string &&
+             data.userId == request.auth.uid &&
+             data.targetRole is string &&
+             data.targetRole.size() > 0 &&
+             data.targetRole.size() <= 200 &&
+             data.resume_match_score is number &&
+             data.resume_match_score >= 0 &&
+             data.resume_match_score <= 100 &&
+             data.critical_skill_gaps is list &&
+             data.critical_skill_gaps.size() <= 10 &&
+             data['4_week_roadmap'] is map;
+    }
+
+    // Roadmaps collection: Strictly isolated under the user's UID
+    match /roadmaps/{roadmapId} {
+      allow get: if isSignedIn() && existing().userId == request.auth.uid;
+      allow list: if isSignedIn() && resource.data.userId == request.auth.uid;
+      allow create: if isSignedIn() &&
+                       isValidId(roadmapId) &&
+                       isValidRoadmap(incoming()) &&
+                       incoming().userId == request.auth.uid;
+      allow update: if isSignedIn() &&
+                       isValidId(roadmapId) &&
+                       existing().userId == request.auth.uid &&
+                       incoming().userId == existing().userId &&
+                       isValidRoadmap(incoming());
+      allow delete: if isSignedIn() &&
+                       isValidId(roadmapId) &&
+                       existing().userId == request.auth.uid;
+
+      // Chats sub-collection: Multi-turn conversation messages with AI Mentor
+      match /chats/{chatId} {
+        allow read: if isSignedIn() &&
+                       get(/databases/$(database)/documents/roadmaps/$(roadmapId)).data.userId == request.auth.uid;
+        allow create: if isSignedIn() &&
+                         isValidId(chatId) &&
+                         incoming().userId == request.auth.uid &&
+                         incoming().content is string &&
+                         incoming().content.size() > 0 &&
+                         incoming().content.size() <= 10000 &&
+                         get(/databases/$(database)/documents/roadmaps/$(roadmapId)).data.userId == request.auth.uid;
+        allow update, delete: if isSignedIn() &&
+                                 get(/databases/$(database)/documents/roadmaps/$(roadmapId)).data.userId == request.auth.uid;
+      }
+    }
+  }
+}
