@@ -16,15 +16,15 @@ Built for cloud-native deployment, Mentra leverages Google Cloud services and th
 
 ### 1. Secure Authentication (Pre-Login)
 *Strict passwordless federated authentication powered by Firebase.*
-![Mentra Pre-Login Screen](mentra1.pdf)
+![Mentra Pre-Login Screen](men11.png)
 
 ### 2. Autonomous Agent Dashboard (Post-Login)
 *Your personalized opportunity feed scanning active roles tailored to your engineering profile.*
-![Mentra Dashboard](mentra2.pdf)
+![Mentra Dashboard](men22.png)
 
 ### 3. Career & Market Intelligence 
 *Verified industry trends, job market growth index, and compensation benchmarks.*
-![Mentra Career Insights](mentra3.pdf)
+![Mentra Career Insights](men33.png)
 
 ---
 
