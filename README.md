@@ -1,6 +1,3 @@
-
-
-```markdown
 # Mentra — Autonomous Career Navigation Agent 🧭
 
 Mentra is an AI-powered career orchestration platform designed to bridge the gap between formal education and technical hiring. It benchmarks professional profiles against target technical roles, diagnoses critical skill gaps, and generates structured, multi-phase execution roadmaps.
@@ -9,8 +6,27 @@ Built for cloud-native deployment, Mentra leverages Google Cloud services and th
 
 > **🏆 Built For:** Gen AI Academy APAC Ideathon 
 
-## Live Prototype
-[Experience Mentra Live](https://mentra-346119786628.asia-southeast1.run.app)
+## 🔗 Live Prototype
+
+**👉 [Click Here to Experience Mentra Live](https://mentra-346119786628.asia-southeast1.run.app) 👈**
+
+---
+
+## 📸 Screenshots
+
+### 1. Secure Authentication (Pre-Login)
+*Strict passwordless federated authentication powered by Firebase.*
+![Mentra Pre-Login Screen](mentra1.pdf)
+
+### 2. Autonomous Agent Dashboard (Post-Login)
+*Your personalized opportunity feed scanning active roles tailored to your engineering profile.*
+![Mentra Dashboard](mentra2.pdf)
+
+### 3. Career & Market Intelligence 
+*Verified industry trends, job market growth index, and compensation benchmarks.*
+![Mentra Career Insights](mentra3.pdf)
+
+---
 
 ## Architecture & Google Cloud Integration
 
@@ -38,25 +54,3 @@ mentra/
 ├── Dockerfile              # Containerization configuration for Cloud Run
 ├── static/                 # Frontend assets, stylesheets, and client scripts
 └── templates/              # HTML layout and dashboard views
-
-```
-
-## Local Development
-
-1. Clone the repository and navigate to the project directory.
-2. Install the required dependencies:
-```bash
-pip install -r requirements.txt
-
-```
-
-
-3. Set your environment variables (Firebase credentials and Gemini API key).
-4. Run the Flask development server:
-```bash
-python app.py
-
-```
-
-
-
