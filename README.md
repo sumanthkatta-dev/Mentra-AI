@@ -1,56 +1,60 @@
-# Mentra - Autonomous Career Navigation Agent
+# Mentra
 
-Mentra is an AI-powered career orchestration platform designed to bridge the gap between formal education and technical hiring. It benchmarks professional profiles against target technical roles, diagnoses critical skill gaps, and generates structured, multi-phase execution roadmaps.
+An AI career mentor for students. You describe your background and the role you want, and Mentra scores your fit, finds the skill gaps, and builds a week-by-week roadmap you can keep asking questions about.
 
-Built for cloud-native deployment, Mentra leverages Google Cloud services and the Gemini API to provide personalized career intelligence.
-
-> **Built For:** Gen AI Academy APAC Ideathon
-
-## Live Prototype
-
-**[Click Here to Experience Mentra Live](https://mentra-346119786628.asia-southeast1.run.app) **
-
----
+**Live app:** [mentra on Cloud Run](https://mentra-346119786628.asia-southeast1.run.app) · built during the Google Cloud Gen AI Academy APAC (Cohort 3)
 
 ## Screenshots
 
-### 1. Secure Authentication (Pre-Login)
-*Strict passwordless federated authentication powered by Firebase.*
-![Mentra Pre-Login Screen](men11.png)
+| Sign-in | Dashboard | Career insights |
+|---|---|---|
+| ![Sign-in](men11.png) | ![Dashboard](men22.png) | ![Career insights](men33.png) |
 
-### 2. Autonomous Agent Dashboard (Post-Login)
-*Your personalized opportunity feed scanning active roles tailored to your engineering profile.*
-![Mentra Dashboard](men22.png)
+## Features
 
-### 3. Career & Market Intelligence 
-*Verified industry trends, job market growth index, and compensation benchmarks.*
-![Mentra Career Insights](men33.png)
+- **Role-fit analysis:** compares your profile with a target role and returns a match score
+- **Skill-gap breakdown:** the specific technical skills you're missing for that role
+- **4-week roadmap:** a structured plan generated as JSON and rendered as a checklist
+- **Mentor chat:** multi-turn follow-up questions, with your saved roadmap as context
+- **Career insights:** market trends and compensation ranges for the role
+- **Saved roadmaps** per user, stored in Firestore
 
----
+## How it works
 
-## Architecture & Google Cloud Integration
+```
+React app ──Firebase ID token──▶ Express server (server.ts) ──▶ Gemini API
+                                        │
+                                        └──▶ Firestore (roadmaps, chat history)
+```
 
-Mentra is architected using a modern, lightweight cloud stack:
+- Users sign in with Google through **Firebase Authentication**.
+- Every API route (`/api/generate-roadmap`, `/api/career-insights`, `/api/chat`) verifies the Firebase ID token on the server with `firebase-admin` before doing anything.
+- The server asks **Gemini** for JSON output (`responseMimeType: application/json`), so roadmaps come back structured instead of free text.
+- **Firestore security rules** deny by default and scope every document to its owner's UID.
+- The Gemini API key is read from the environment at runtime and never reaches the browser.
+- The whole app is deployed as one container on **Google Cloud Run**.
 
-- **Firebase Authentication:** Handles Google Sign-In and user identity verification.
-- **Cloud Firestore:** Manages persistent user and application data storage with UID-scoped access rules.
-- **Gemini API (AI Studio):** Functions as the analytical reasoning engine for role matching, gap analysis, and roadmap generation using structured JSON outputs.
-- **Google Cloud Run:** Hosts the containerized production web application, handling automatic scaling based on traffic.
+## Tech stack
 
-## Key Features
+React 19 · TypeScript · Vite · Tailwind CSS · Express · Gemini API (`@google/genai`) · Firebase Auth · Cloud Firestore · Google Cloud Run
 
-- **AI-Powered Resume Benchmarking:** Analyzes candidate experience against a target technical role and generates a baseline role-match score.
-- **Skill Gap Analysis:** Identifies missing technical and architectural skills required for the target role.
-- **Actionable 4-Week Roadmaps:** Generates structured, day-by-day execution steps to address identified skill gaps.
-- **Multi-Turn Mentor Chat:** Allows users to ask contextual follow-up questions regarding their personalized roadmap.
-- **Lunar Chrome UI:** A minimal, dark-mode interface designed specifically for developer workflows.
+## Running locally
 
-## Project Structure
+```bash
+git clone https://github.com/sumanthkatta-dev/Mentra-AI.git
+cd Mentra-AI
+npm install
+cp .env.example .env    # set GEMINI_API_KEY
+npm run dev
+```
 
-```text
-mentra/
-├── app.py                  # Flask backend API & Gemini integration routes
-├── requirements.txt        # Python dependencies
-├── Dockerfile              # Containerization configuration for Cloud Run
-├── static/                 # Frontend assets, stylesheets, and client scripts
-└── templates/              # HTML layout and dashboard views
+Firebase project settings go in `firebase-applet-config.json`.
+
+## Project structure
+
+```
+server.ts           Express API: auth middleware, Gemini calls, serves the Vite build
+src/components/     RoadmapForm, RoadmapDisplay, MentorChat, CareerInsights, DiscoveryView, …
+firestore.rules     Per-user access rules
+app.py              Earlier Flask prototype of the mentor-chat endpoint
+```
