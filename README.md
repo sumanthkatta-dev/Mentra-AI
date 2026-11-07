@@ -1,4 +1,4 @@
-# Mentra — Autonomous Career Navigation Agent
+# Mentra - Autonomous Career Navigation Agent
 
 Mentra is an AI-powered career orchestration platform designed to bridge the gap between formal education and technical hiring. It benchmarks professional profiles against target technical roles, diagnoses critical skill gaps, and generates structured, multi-phase execution roadmaps.
 
