@@ -1,18 +1,18 @@
-# Mentra — Autonomous Career Navigation Agent 🧭
+# Mentra — Autonomous Career Navigation Agent
 
 Mentra is an AI-powered career orchestration platform designed to bridge the gap between formal education and technical hiring. It benchmarks professional profiles against target technical roles, diagnoses critical skill gaps, and generates structured, multi-phase execution roadmaps.
 
 Built for cloud-native deployment, Mentra leverages Google Cloud services and the Gemini API to provide personalized career intelligence.
 
-> **🏆 Built For:** Gen AI Academy APAC Ideathon 
+> **Built For:** Gen AI Academy APAC Ideathon
 
-## 🔗 Live Prototype
+## Live Prototype
 
-**👉 [Click Here to Experience Mentra Live](https://mentra-346119786628.asia-southeast1.run.app) 👈**
+**[Click Here to Experience Mentra Live](https://mentra-346119786628.asia-southeast1.run.app) **
 
 ---
 
-## 📸 Screenshots
+## Screenshots
 
 ### 1. Secure Authentication (Pre-Login)
 *Strict passwordless federated authentication powered by Firebase.*
